@@ -26,7 +26,7 @@ Living design and implementation reference. Update this document whenever an app
 - The battlefield is a vertically scrollable play area larger than the visible phone viewport.
 - The map is portrait-oriented and should feel like a continuous game world, not a webpage.
 - Customers follow a winding path toward the restaurant.
-- Grass areas beside the path contain designated buildable locations.
+- Every clear grass tile on the printed 15 × 13 map grid is buildable when unoccupied. Build eligibility is sampled from the actual map artwork; stone path, restaurant, and tiles covered by environmental props are excluded automatically.
 - Turrets remain fixed to world positions while the camera moves.
 - Use custom touch-driven camera movement. Do not use browser-native document/page scrolling.
 - HUD and build controls remain fixed while the battlefield camera moves.
