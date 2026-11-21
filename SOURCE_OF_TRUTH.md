@@ -56,6 +56,7 @@ Living design and implementation reference. Update this document whenever an app
 ## Turrets and combat
 Turrets are food-based weapons, not conventional fantasy or military towers.
 - Automatically acquire eligible customers within range.
+- Rotate each turret's weapon/barrel to face its current in-range target; smoothly update its aim as that customer moves, while keeping the turret base anchored to its tile.
 - Fire visible food projectiles.
 - Have distinct range, firing rate, feeding power, projectile behavior, and upgrade paths.
 - Initial concepts:
