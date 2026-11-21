@@ -176,3 +176,16 @@ As assets are added, record file path/name, intended use, source/creator and lic
 - Are any browser-native controls, fonts, scrollbars, or default elements visible?
 - Does the battlefield remain readable during active combat?
 - Are touch interactions visually clear?
+
+
+## Verified repository artwork (2026-11-21)
+The four user-supplied source files are present in the repository root and are used as source artwork; preserve the originals.
+
+| File | Verified dimensions | Intended use |
+|---|---:|---|
+| `IMG_1357.jpeg` | 160 × 119 | 4 × 4 food-turret / firing-state sheet. Condiment turret states occupy the upper rows; pizza-cannon states occupy the lower rows. |
+| `IMG_1359.jpeg` | 160 × 119 | Full battlefield composition: winding stone route, grass, restaurant, and environmental props. |
+| `IMG_1363.jpeg` | 160 × 87 | 8 × 3 customer sprite layout with two character designs and feeding/progression poses. The first four cells of the top row and first four of the second row are used as initial walk cycles. |
+| `IMG_1364.gif` | 1632 × 1344 | UI reference sheet containing buttons, icons, controls, pop-up panels, and pixel-font glyph samples. |
+
+The current runtime extracts transparent character/turret cutouts from the JPEG sprite sheets by removing the neutral gray sheet background. Cropping is calculated from the loaded image's actual dimensions rather than assuming a high-resolution export. The source files remain unchanged. The GIF is retained as the UI reference for the next interface-art integration pass.
