@@ -77,7 +77,8 @@ function layoutWorld(){const w=Math.min(arena.clientWidth,arena.clientHeight*160
 function worldSize(){return {w:world.clientWidth,h:world.clientHeight}}
 function pos(p){let s=worldSize();return {x:p.x*s.w,y:p.y*s.h}}
 function initSpots(){
- const img=$('mapArt'),canvas=document.createElement('canvas');
+ const img=$('mapArt');if(!img.complete||!img.naturalWidth){img.addEventListener('load',initSpots,{once:true});return}
+ const canvas=document.createElement('canvas');
  canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
  const ctx=canvas.getContext('2d',{willReadFrequently:true});
  ctx.drawImage(img,0,0);
