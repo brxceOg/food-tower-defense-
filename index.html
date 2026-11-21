@@ -51,7 +51,7 @@ const defs=[
 let coins=180,health=10,wave=1,bestWave=Number(localStorage.getItem('ftd-best-wave')||0),selected='ketchup',selectedSpot=null,placing=true,active=false,spawned=0,cleared=0,total=0,last=0,camY=0,drag=null,runStats={fed:0,earned:0},towers=[],customers=[],shots=[],spotDefs=[],lastTime=0,raf=0;
 const route=[{x:.02,y:.53},{x:.28,y:.53},{x:.30,y:.43},{x:.30,y:.29},{x:.39,y:.21},{x:.59,y:.21},{x:.66,y:.30},{x:.66,y:.49},{x:.54,y:.55},{x:.53,y:.70},{x:.64,y:.78},{x:.82,y:.78},{x:.86,y:.68},{x:.86,y:.47},{x:.91,y:.47}];
 // Build pads are centered on the artwork's visible grass-grid cells (map image coordinates, not a separate CSS grid).
-const spots=[[.450,.224],[.539,.224],[.628,.224],[.717,.224],[.806,.314],[.450,.583],[.539,.672],[.628,.761],[.717,.851],[.806,.851],[.895,.672],[.984,.583]];
+const spots=[[.471,.404],[.537,.404],[.471,.493],[.537,.493],[.604,.583],[.671,.583],[.737,.673],[.804,.673],[.337,.673],[.404,.762],[.537,.852],[.737,.852]];
 function layoutWorld(){const w=Math.min(arena.clientWidth,arena.clientHeight*160/119);const h=w*119/160;world.style.width=w+'px';world.style.height=h+'px';world.style.left='50%';world.style.top='50%';world.style.transform='translate(-50%,-50%)';camY=0}
 function worldSize(){return {w:world.clientWidth,h:world.clientHeight}}
 function pos(p){let s=worldSize();return {x:p.x*s.w,y:p.y*s.h}}
