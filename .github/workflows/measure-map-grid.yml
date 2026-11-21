@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - run: pip install pillow
+      - run: pip install pillow numpy
       - name: Measure source grid lines
         run: |
           python - <<'PY'
