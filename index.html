@@ -38,7 +38,7 @@
 const $=id=>document.getElementById(id), arena=$('arena'), world=$('world');
 const art={turrets:[],customers:[[],[]]};
 function cutSheet(url,cols,rows,cellX,cellY,targets){return new Promise(resolve=>{const im=new Image();im.onload=()=>{const out=[];targets.forEach(([col,row])=>{const x=Math.round(col*im.width/cols),y=Math.round(row*im.height/rows),w=Math.round((col+1)*im.width/cols)-x,h=Math.round((row+1)*im.height/rows)-y;const c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d',{willReadFrequently:true});g.drawImage(im,x,y,w,h,0,0,w,h);const id=g.getImageData(0,0,w,h),d=id.data;const bg=[d[0],d[1],d[2]];let minX=w,minY=h,maxX=0,maxY=0;for(let yy=0;yy<h;yy++)for(let xx=0;xx<w;xx++){let i=(yy*w+xx)*4,dr=d[i]-bg[0],dg=d[i+1]-bg[1],db=d[i+2]-bg[2];if(Math.sqrt(dr*dr+dg*dg+db*db)<34){d[i+3]=0}else if(d[i+3]>0){minX=Math.min(minX,xx);minY=Math.min(minY,yy);maxX=Math.max(maxX,xx);maxY=Math.max(maxY,yy)}}g.putImageData(id,0,0);if(maxX>minX&&maxY>minY){const trim=document.createElement('canvas');trim.width=maxX-minX+1;trim.height=maxY-minY+1;trim.getContext('2d').drawImage(c,minX,minY,trim.width,trim.height,0,0,trim.width,trim.height);out.push(trim.toDataURL('image/png'))}else out.push('')});resolve(out)};im.onerror=()=>resolve([]);im.src=url})}
-async function layoutWorld();loadArtwork(){const tur=await cutSheet('IMG_1357.jpeg',4,4,300,200,[[0,0],[0,2],[0,3]]);art.turrets=tur;const cus=await cutSheet('IMG_1363.jpeg',8,3,176,256,[[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2]]);art.customers=[cus.slice(0,4),cus.slice(4,8)];document.querySelectorAll('.turret').forEach(()=>{});towers.forEach(t=>applyTowerArt(t));customers.forEach(c=>applyCustomerArt(c))}
+async function loadArtwork(){const tur=await cutSheet('IMG_1357.jpeg',4,4,300,200,[[0,0],[0,2],[0,3]]);art.turrets=tur;const cus=await cutSheet('IMG_1363.jpeg',8,3,176,256,[[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2]]);art.customers=[cus.slice(0,4),cus.slice(4,8)];document.querySelectorAll('.turret').forEach(()=>{});towers.forEach(t=>applyTowerArt(t));customers.forEach(c=>applyCustomerArt(c))}
 function applyTowerArt(t){if(!t.el)return;const d=defs.find(v=>v.id===t.type);let src=t.type==='pizza'?art.turrets[1]:t.type==='burger'?art.turrets[2]:art.turrets[0];if(src){t.el.innerHTML='<img alt="" src="'+src+'">'}}
 function applyCustomerArt(c){if(!c.el||!art.customers[0].length)return;const row=c.variant||0,frames=art.customers[row];if(frames.length){c.el.innerHTML='<img alt=""> <div class="bar"><i></i></div>';c.sprite=c.el.querySelector('img');c.frame=0;c.sprite.src=frames[0]}}
 
@@ -76,7 +76,7 @@ $('waveBtn').onclick=()=>{if(!active)spawn()};
 $('inspect').onclick=()=>{if(selectedSpot&&selectedSpot.tower){let d=defs.find(x=>x.id===selectedSpot.tower);toast(d.name+' · '+d.damage+' feed · '+d.range+' range')}else toast('Tap a placed turret to inspect it')};
 $('play').onclick=()=>{$('intro').classList.add('hidden');initSpots();update();loadArtwork();};
 let startY=0,startCam=0,moved=false;
-window.addEventListener('resize',()=>{layoutWorld();initSpots();renderAll()});
+window.addEventListener('resize',layoutWorld);
 let lastFrame=0;function loop(now){let dt=Math.min(40,now-lastFrame||16);lastFrame=now;updateGame(dt,now);if(active&&spawned>=total&&customers.every(c=>c.dead))checkWave();requestAnimationFrame(loop)}requestAnimationFrame(loop);
 })();
 </script>
