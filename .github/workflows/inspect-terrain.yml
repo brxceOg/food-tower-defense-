@@ -1,6 +1,9 @@
 name: Inspect map terrain tiles
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/inspect-terrain.yml'
 jobs:
   inspect:
     runs-on: ubuntu-latest
