@@ -74,7 +74,7 @@ function endRun(win){active=false;if(win)bestWave=Math.max(bestWave,wave);else b
 $('continue').onclick=()=>{ $('result').classList.add('hidden');if(health<=0){health=10;coins=180;wave=1;runStats={fed:0,earned:0};towers=[];$('towers').innerHTML='';spotDefs.forEach(s=>{s.tower=null;s.el.classList.remove('occupied')})}else wave++;customers=[];$('customers').innerHTML='';shots=[];update()};
 $('waveBtn').onclick=()=>{if(!active)spawn()};
 $('inspect').onclick=()=>{if(selectedSpot&&selectedSpot.tower){let d=defs.find(x=>x.id===selectedSpot.tower);toast(d.name+' · '+d.damage+' feed · '+d.range+' range')}else toast('Tap a placed turret to inspect it')};
-$('play').onclick=()=>{$('intro').classList.add('hidden');initSpots();update();loadArtwork();};
+layoutWorld();$('play').onclick=()=>{$('intro').classList.add('hidden');initSpots();update();loadArtwork();};
 let startY=0,startCam=0,moved=false;
 window.addEventListener('resize',layoutWorld);
 let lastFrame=0;function loop(now){let dt=Math.min(40,now-lastFrame||16);lastFrame=now;updateGame(dt,now);if(active&&spawned>=total&&customers.every(c=>c.dead))checkWave();requestAnimationFrame(loop)}requestAnimationFrame(loop);
