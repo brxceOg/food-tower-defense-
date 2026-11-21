@@ -93,6 +93,57 @@ HTML, CSS, and JavaScript may be used underneath, but all visible controls must 
 - Preserve crisp pixel scaling across iPhone viewport sizes.
 - Prevent accidental text selection, browser callouts, and disruptive page gestures where practical.
 
+
+## Enhanced pixel-art and 2.5D visual direction
+
+The target is **premium, expressive pixel art with subtle 2.5D depth**—not bare-bones or deliberately crude pixel art, and not fully 3D.
+
+Use the visual idea of a paper-craft world: characters and objects can feel like dimensional, layered pieces placed into a richly illustrated game environment. The Paper Mario comparison is a useful directional reference for the balance of flat, readable character designs and dimensional presentation; do not copy its characters or exact assets.
+
+### Shape, depth, and shading
+- Aim for polished, carefully constructed pixel art with appealing silhouettes, deliberate palettes, rich details, and consistent lighting.
+- Give characters, turrets, food, props, and environment a subtle sense of volume through stepped pixel shading, highlights, ambient occlusion, and cast/contact shadows.
+- Use layered forms and restrained perspective cues so objects feel like crafted pieces with thickness, rather than flat stickers.
+- Characters may retain mostly flat, graphic front-facing designs while receiving dimensional shading, layered limbs/accessories, subtle side thickness, and soft pixel shadows.
+- Use tasteful bevels, raised surfaces, rounded volume, and material-specific highlights where they suit the object.
+- The map may use gentle height variation, layered terrain edges, raised path borders, dimensional props, and depth-aware shadows.
+- Maintain a coherent light direction and consistent shadow behavior across the whole scene.
+- Depth should improve readability and charm, never obscure the clean pixel silhouettes.
+
+### Keep it pixel art—not full 3D
+- Do not turn the game into a fully 3D-rendered scene.
+- Do not use smooth polygonal 3D models as a replacement for pixel-art sprites.
+- Do not apply generic 3D bevel filters or blurry gradients to pixel assets.
+- Dimensionality should be authored in the pixel-art style: stepped shading, carefully placed highlights, layered sprite parts, pixel shadows, and limited perspective.
+- Preserve crisp pixel edges and the established pixel scale even when suggesting volume.
+- Avoid a flat, unshaded, low-detail appearance; the intended finish is richer and more tactile than basic pixel art.
+
+## Custom pixel combat effects — required
+
+Combat effects must be custom-designed pixel art and treated as a major part of the game's visual identity. Do not rely on generic CSS flashes, emoji, stock particles, or plain circles as final combat feedback.
+
+Create a consistent effect language for:
+- Food projectile trails and flight.
+- Muzzle flashes and turret firing recoil.
+- Food impact splats, crumbs, sauce bursts, and hit sparks.
+- Feeding/eating reactions and satisfaction celebrations.
+- Area-of-effect bursts for pizza or other splash weapons.
+- Soda spray, sticky puddles, slowing effects, and ice/freeze effects.
+- Customer damage feedback and clear defeat/satisfied cues.
+- Turret upgrade or activation effects.
+- Wave-start, wave-clear, and game-over presentation.
+
+Effects should be distinctive to the food or weapon causing them. For example, sauce impacts can create a small stylized splat; pizza impacts can scatter toppings or crumbs; soda can leave a brief fizzy splash; ice cream can create a frosty pixel burst. These are visual direction examples, not fixed mechanics.
+
+### Effect animation and readability
+- Use authored sprite animations or carefully drawn pixel-particle sequences with consistent pixel density.
+- Give effects a clear beginning, readable peak, and quick resolution.
+- Layer effects correctly in front of or behind characters and turrets.
+- Keep effects legible on a phone without overwhelming customer sprites or the route.
+- Use varied but controlled timing, scale, and silhouettes to make different weapons feel satisfying.
+- Avoid excessive screen shake, full-screen flashes, visual noise, and effects that hide important gameplay.
+- Where appropriate, use subtle squash/stretch or layered frame changes while preserving the pixel-art look.
+
 ## Motion and feedback
 - Keep animations expressive but controlled so busy waves remain readable.
 - Customers visibly walk along the route.
