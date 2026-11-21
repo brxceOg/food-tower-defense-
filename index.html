@@ -50,16 +50,20 @@ const defs=[
 ];
 let coins=180,health=10,wave=1,bestWave=Number(localStorage.getItem('ftd-best-wave')||0),selected='ketchup',selectedSpot=null,placing=true,active=false,spawned=0,cleared=0,total=0,last=0,camY=0,drag=null,runStats={fed:0,earned:0},towers=[],customers=[],shots=[],spotDefs=[],lastTime=0,raf=0;
 const route=[{x:.02,y:.53},{x:.28,y:.53},{x:.30,y:.43},{x:.30,y:.29},{x:.39,y:.21},{x:.59,y:.21},{x:.66,y:.30},{x:.66,y:.49},{x:.54,y:.55},{x:.53,y:.70},{x:.64,y:.78},{x:.82,y:.78},{x:.86,y:.68},{x:.86,y:.47},{x:.91,y:.47}];
-// The source map is 160 x 119. The printed grass grid spans x=34.25..149.25
-// and y=10.40..111.20 in that intrinsic image coordinate space (10 columns x 9 rows).
-// SVG viewBox coordinates keep every overlay edge registered to the source artwork.
-const grid={left:34.25,top:10.40,cellW:11.50,cellH:11.20};
-const tileCenter=(col,row)=>[(grid.left+(col+0.5)*grid.cellW)/160,(grid.top+(row+0.5)*grid.cellH)/119];
-const spots=[[3,3],[4,3],[3,4],[4,4],[5,5],[6,6],[7,6],[8,7],[1,6],[2,7],[4,8],[7,8]];
+// Measured from the actual IMG_1359.jpeg raster (1200 x 896 px).
+// The printed grass placement grid has 15 columns x 13 rows.
+// These are the source-image grid-line coordinates, converted into the SVG's
+// matching 160 x 119 viewBox so the overlay uses the map's own tile boundaries.
+const mapGridX=[257,314.4,371.8,429.2,486.6,544,601.4,658.8,716.2,773.6,831,888.4,945.8,1003.2,1060.6,1118].map(x=>x*160/1200);
+const mapGridY=[78,136.2,194.3,252.5,310.6,368.8,426.9,485.1,543.2,601.4,659.5,717.7,775.8,834].map(y=>y*119/896);
+// Keep the established build locations in the same world positions, translated
+// onto the actual 15 x 13 map tiles.
+const spots=[[5,5],[6,5],[5,6],[6,6],[8,7],[9,9],[11,9],[12,10],[2,9],[3,10],[6,12],[11,12]];
+const tileCenter=(col,row)=>[(mapGridX[col]+mapGridX[col+1])/320,(mapGridY[row]+mapGridY[row+1])/238];
 function layoutWorld(){const w=Math.min(arena.clientWidth,arena.clientHeight*160/119);const h=w*119/160;world.style.width=w+'px';world.style.height=h+'px';world.style.left='50%';world.style.top='50%';world.style.transform='translate(-50%,-50%)';camY=0}
 function worldSize(){return {w:world.clientWidth,h:world.clientHeight}}
 function pos(p){let s=worldSize();return {x:p.x*s.w,y:p.y*s.h}}
-function initSpots(){spotDefs=spots.map(([col,row],i)=>{const [x,y]=tileCenter(col,row);return {id:i,col,row,x,y,tower:null}});const host=$('spots');host.innerHTML='';spotDefs.forEach(s=>{const el=document.createElementNS('http://www.w3.org/2000/svg','rect');el.setAttribute('class','buildspot');el.setAttribute('data-id',s.id);el.setAttribute('x',grid.left+s.col*grid.cellW);el.setAttribute('y',grid.top+s.row*grid.cellH);el.setAttribute('width',grid.cellW);el.setAttribute('height',grid.cellH);el.addEventListener('pointerdown',e=>e.stopPropagation());el.addEventListener('click',()=>place(s));host.append(el);s.el=el})}
+function initSpots(){spotDefs=spots.map(([col,row],i)=>{const [x,y]=tileCenter(col,row);return {id:i,col,row,x,y,tower:null}});const host=$('spots');host.innerHTML='';spotDefs.forEach(s=>{const el=document.createElementNS('http://www.w3.org/2000/svg','rect');el.setAttribute('class','buildspot');el.setAttribute('data-id',s.id);el.setAttribute('x',mapGridX[s.col]);el.setAttribute('y',mapGridY[s.row]);el.setAttribute('width',mapGridX[s.col+1]-mapGridX[s.col]);el.setAttribute('height',mapGridY[s.row+1]-mapGridY[s.row]);el.addEventListener('pointerdown',e=>e.stopPropagation());el.addEventListener('click',()=>place(s));host.append(el);s.el=el})}
 function renderShop(){const host=$('shop');host.innerHTML='';defs.forEach(d=>{let b=document.createElement('button');b.className='item'+(selected===d.id?' active':'');b.innerHTML='<span class="icon">'+d.icon+'</span><b>'+d.name.replace(' Cannon','').replace(' Launcher','').replace(' Blaster','')+'</b><small>'+d.cost+'¢</small>';b.disabled=coins<d.cost;b.onclick=()=>{selected=d.id;placing=true;renderShop();$('hint').textContent='Tap a glowing grass tile to place '+d.name+'.'};host.append(b)})}
 function update(){ $('coins').textContent=coins;$('health').textContent='❤️ '+health;$('wave').textContent=wave;$('progress').style.width=(total?Math.min(100,cleared/total*100):0)+'%';renderShop()}
 function toast(msg){let t=$('toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.add('hidden'),1600)}
