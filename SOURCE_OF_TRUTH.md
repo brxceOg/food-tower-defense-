@@ -175,3 +175,8 @@ Do not silently assume answers for: final branding/title; exact map dimensions a
 ## Map aspect ratio and fit
 - The original battlefield art is 1200 × 896 (75:56). Show the entire image at a uniform scale, centered inside the available arena; never stretch or crop the artwork to force a portrait aspect ratio.
 - On portrait phones, use the surrounding grass-color area to fill any unused space above/below the landscape-proportioned map. The map, tile grid, route, towers, customers, and effects must share the same fitted world dimensions.
+
+
+## Edge-to-edge map presentation
+- The battlefield covers the entire available arena from edge to edge. Scale the 1200 × 896 map uniformly using a centered cover fit; crop the overflow at the arena boundaries rather than stretching the map or leaving a contrasting background visible.
+- Keep the world coordinate plane at the same 75:56 aspect ratio and enlarge it to cover the arena. The printed tile grid, route, towers, customers, and effects all remain aligned to that plane.
