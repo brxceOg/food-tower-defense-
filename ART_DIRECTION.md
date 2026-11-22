@@ -51,6 +51,8 @@ These establish the initial character and environment direction. Inspect and int
 ## Food turrets and projectiles
 Food weaponry is the defining visual hook. Weapons should be immediately recognizable as food-themed machines or stations.
 
+- Turrets should read as substantial objects sitting on top of the grass, while their footprint remains centered inside the selected build tile. Their artwork may extend beyond the tile edges; use a consistent enlarged footprint and a compact contact shadow at the base to visually seat each turret on the terrain. Keep the sprite crisp and preserve its bottom/base anchor when scaling.
+
 Initial concepts: Ketchup Cannon, Mustard Cannon, Pizza Launcher, Burger Blaster, Soda Sprayer, Fry Flinger, and Ice Cream Machine.
 
 - Give each turret a distinct silhouette and readable firing direction.
