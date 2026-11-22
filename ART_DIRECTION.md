@@ -199,3 +199,10 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 - Extract the knockback pose from the combined middle-bottom region, then isolate its largest connected character silhouette against the sheet background. Do not crop it to a single walk-cell boundary.
 - Keep the reaction on the same normalized scale and bottom baseline as the walk cycle. Its transparent output canvas may be wider than a walk frame; render that reaction image wider than the normal customer box so the complete pose remains visible without shrinking or clipping it.
 - Preserve all six existing walk-frame crops and the original source image.
+
+
+### Female customer sprite-sheet replacement (2026-11-22)
+- `IMG_1366.jpeg` replaces the prior female customer walk-cycle source in the runtime. Preserve `IMG_1363.jpeg` as an original legacy asset; do not use it for the active female walk animation.
+- Extract six walk frames independently from the six cells across the top row. Keep the order left-to-right.
+- The lower-left knockback pose spans beyond one standard cell. Extract it from the combined first two cells of the bottom row, isolate the complete connected character silhouette, and normalize it with the same scale and bottom baseline as the six walk frames.
+- Keep the knockback image canvas wide enough to retain the full pose and render it with the dedicated wide hit-pose treatment. The female hit pose must be wired to the female customer reaction slot, not substituted for the male reaction.
