@@ -154,7 +154,7 @@ Do not silently assume answers for: final branding/title; exact map dimensions a
 
 
 ## Turret initial orientation
-- On placement, each turret initially faces toward the customer spawn point at `route[0]`, so players can immediately read its defensive direction before a wave begins.
+- On placement, every turret initially faces toward the customer spawn point at `route[0]`, so players can immediately read its defensive direction before a wave begins. Calculate the left/right flip from the turret's world X position relative to `route[0].x`, and account for source-art facing: Chip Tosser's source sprite faces the opposite way from Ketchup Cannon and Burger Blaster, so its flip sign must be inverted.
 - During combat, turrets may turn to face their current eligible target; when no target is available, they retain their spawn-facing orientation.
 
 
