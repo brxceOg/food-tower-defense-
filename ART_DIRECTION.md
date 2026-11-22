@@ -38,8 +38,7 @@ These establish the initial character and environment direction. Inspect and int
 - The map should extend beyond the viewport as a continuous world without visible seams or abrupt jumps.
 
 ## Customer art and animation
-- The supplied customer sheet is segmented using its measured 180 × 256 source cells; isolate background pixels from the outside inward so pale character details remain intact.
-- Crop the exact 180 × 256 source cells and preserve their original pixel scale and coordinates on identical transparent canvases. Never independently trim-and-rescale frames; that causes characters to jump in size or position and can pull neighboring artwork into the animation.
+- The supplied customer sheet is divided into measured 180 × 256 source cells. Extract the largest connected character silhouette from each walk-cycle cell independently, discard disconnected labels and neighboring artwork, then assemble the isolated sprites into a clean 4 × 2 sheet. Normalize all eight extracted sprites with one shared scale and a common bottom baseline so the animation does not jump or change size between frames.
 - Keep each character's frame sequence separate and advance it on a per-customer timer at a steady, readable pace.
 - Keep customers recognizable as the supplied characters.
 - Use available walking and reaction animations where supported by the sheets.
@@ -188,7 +187,7 @@ The four user-supplied source files are present in the repository root and are u
 |---|---:|---|
 | `IMG_1357.jpeg` | 160 × 119 | 4 × 4 food-turret / firing-state sheet. Condiment turret states occupy the upper rows; pizza-cannon states occupy the lower rows. |
 | `IMG_1359.jpeg` | 160 × 119 | Full battlefield composition: winding stone route, grass, restaurant, and environmental props. |
-| `IMG_1363.jpeg` | 160 × 87 | 8 × 3 customer sprite layout with two character designs and feeding/progression poses. The first four cells of the top row and first four of the second row are used as initial walk cycles. |
+| `IMG_1363.jpeg` | 1440 × 768 | 8 × 3 customer sprite layout with two character designs and feeding/progression poses. The first four cells of the top row and first four of the second row are used as initial walk cycles. |
 | `IMG_1364.gif` | 1632 × 1344 | UI reference sheet containing buttons, icons, controls, pop-up panels, and pixel-font glyph samples. |
 
 The current runtime extracts transparent character/turret cutouts from the JPEG sprite sheets by removing the neutral gray sheet background. Cropping is calculated from the loaded image's actual dimensions rather than assuming a high-resolution export. The source files remain unchanged. The GIF is retained as the UI reference for the next interface-art integration pass.
