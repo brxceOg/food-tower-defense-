@@ -211,3 +211,10 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 ### Initial turret facing (2026-11-22)
 - Newly placed turrets must initially face toward the customer spawn point at the beginning of the route. Determine the left/right flip from the turret's world X position relative to `route[0].x`.
 - Once an eligible customer enters range, normal target-facing logic may turn the turret toward that customer. When no target is available, retain the spawn-facing orientation.
+
+
+### Turret sprite-sheet animation integration (2026-11-22)
+- Use the supplied `IMG_1357.jpeg` as a 4 × 4 sheet with 300 × 224 source cells at its 1200 × 896 raster dimensions.
+- Ketchup and mustard turrets use their corresponding idle and firing frames from the first two rows. Pizza and burger cannon turrets use the idle, firing, blast, and smoke sequence from the third row.
+- All animation frames must be rendered inside the existing fixed turret element footprint. Never resize the turret element between frames; preserve the same facing flip and anchor while changing only the image source.
+- Trigger the firing sequence from the existing projectile launch event and return to the idle frame automatically. Keep nearest-neighbor pixel rendering.
