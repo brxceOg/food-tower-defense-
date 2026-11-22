@@ -224,3 +224,11 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 - Do not independently scale each turret animation cel to its own trimmed bounds. This makes narrow firing poses appear smaller or larger than idle art.
 - For each turret family, compute a robust shared scale from the median visible width and height across its frames, so one unusually large or poorly trimmed cel cannot shrink every pose. Apply that same scale to every frame in the family.
 - Preserve each complete 300 × 224 source cell on a matching 300 × 224 transparent output canvas. Remove only the edge-connected neutral sheet background; do not trim the visible bounds or independently rescale the pose, because this can clip artwork or make frames appear tiny. Display the cell with `object-fit: contain` in the enlarged fixed turret footprint so all frame artwork remains visible at a consistent source scale. Preserve the same turret element size, anchor, and facing flip while only swapping the image source.
+
+
+### Unified ketchup-and-mustard cannon replacement (2026-11-22)
+- The newly supplied `IMG_1367.jpeg` replaces the former ketchup and mustard turret artwork with one shared red cannon.
+- The red cannon is a single shop/build option; remove the separate mustard option. Existing saved mustard towers remain compatible and render/use the shared ketchup cannon behavior.
+- The supplied sheet is 1408 × 768 and is divided into seven columns by four rows. Extract the two top-row red cannon poses and the seven red cannon smoke-animation poses from the bottom row; exclude the yellow cannon art and the standalone projectile.
+- Build a dedicated transparent runtime atlas from individually isolated frames. Preserve each complete source cell on a consistent 202 × 192 canvas; remove only edge-connected neutral background. Never trim or independently scale frame bounds, so no cannon, base, muzzle, or smoke pixels are clipped and animation frames retain a stable footprint.
+- The shared cannon uses the top-left red cannon pose as idle and cycles through all seven bottom-row smoke poses when firing. Pizza and burger retain their existing artwork and animation mapping.
