@@ -189,5 +189,6 @@ The four user-supplied source files are present in the repository root and are u
 | `IMG_1359.jpeg` | 160 × 119 | Full battlefield composition: winding stone route, grass, restaurant, and environmental props. |
 | `IMG_1363.jpeg` | 1440 × 768 | 8 × 3 customer sprite layout with two character designs and feeding/progression poses. The first four cells of the top row and first four of the second row are used as initial walk cycles. |
 | `IMG_1364.gif` | 1632 × 1344 | UI reference sheet containing buttons, icons, controls, pop-up panels, and pixel-font glyph samples. |
+| `IMG_1365.jpeg` | Newly supplied male-customer sheet | Six isolated walk-cycle frames across the upper row and one isolated knockback/reaction pose in the lower row; use a shared scale and bottom baseline. |
 
 The current runtime extracts transparent character/turret cutouts from the JPEG sprite sheets by removing the neutral gray sheet background. Cropping is calculated from the loaded image's actual dimensions rather than assuming a high-resolution export. The source files remain unchanged. The GIF is retained as the UI reference for the next interface-art integration pass.
