@@ -19,9 +19,9 @@
 </header>
 <main class="arena" id="arena">
  <div class="world" id="world">
-  <img class="map-art" id="mapArt" src="IMG_1359.jpeg" alt="">
+  <img class="map-art" id="mapArt" src="IMG_1359-cropped.svg" alt="">
   <svg class="pathline" viewBox="0 0 390 1450" preserveAspectRatio="none"><path d="M45 1390 L45 1180 Q45 1110 125 1110 L290 1110 Q345 1110 345 1040 L345 900 Q345 830 260 830 L105 830 Q45 830 45 760 L45 620 Q45 550 120 550 L280 550 Q345 550 345 470 L345 320 Q345 250 260 250 L190 250" fill="none" stroke="white" stroke-width="36"/></svg>
-  <svg id="spots" viewBox="0 0 160 119" preserveAspectRatio="none" aria-label="Buildable tiles"></svg><div id="towers"></div><div id="customers"></div><div id="effects"></div>
+  <svg id="spots" viewBox="0 0 160 124.923077" preserveAspectRatio="none" aria-label="Buildable tiles"></svg><div id="towers"></div><div id="customers"></div><div id="effects"></div>
  </div>
 </main>
 <footer class="bottom">
@@ -55,18 +55,18 @@ const defs=[
  {id:'burger',name:'Burger Blaster',cost:180,damage:6,rate:2500,range:245,icon:'🍔',speed:270}
 ];
 let coins=180,health=10,wave=1,bestWave=Number(localStorage.getItem('ftd-best-wave')||0),selected=null,selectedSpot=null,placing=false,active=false,spawned=0,cleared=0,total=0,last=0,camY=0,drag=null,runStats={fed:0,earned:0},towers=[],customers=[],shots=[],spotDefs=[],lastTime=0,raf=0;
-const route=[{x:.02,y:.53},{x:.28,y:.53},{x:.30,y:.43},{x:.30,y:.29},{x:.39,y:.21},{x:.59,y:.21},{x:.66,y:.30},{x:.66,y:.49},{x:.54,y:.55},{x:.53,y:.70},{x:.64,y:.78},{x:.82,y:.78},{x:.86,y:.68},{x:.86,y:.47},{x:.91,y:.47}];
+const route=[{x:-8.615385,y:69.366154},{x:39.384615,y:69.366154},{x:43.076923,y:55.581538},{x:43.076923,y:36.283077},{x:59.692308,y:25.255385},{x:96.615385,y:25.255385},{x:109.538462,y:37.661538},{x:109.538462,y:63.852308},{x:87.384615,y:72.123077},{x:85.538462,y:92.800000},{x:105.846154,y:103.827692},{x:139.076923,y:103.827692},{x:146.461538,y:90.043077},{x:146.461538,y:61.095385},{x:155.692308,y:61.095385}];
 // Measured from the actual IMG_1359.jpeg raster (1200 x 896 px).
 // The printed grass placement grid has 15 columns x 13 rows.
 // These are the source-image grid-line coordinates, converted into the SVG's
 // matching 160 x 119 viewBox so the overlay uses the map's own tile boundaries.
-const mapGridX=[257,314.4,371.8,429.2,486.6,544,601.4,658.8,716.2,773.6,831,888.4,945.8,1003.2,1060.6,1118].map(x=>x*160/1200);
-const mapGridY=[78,136.2,194.3,252.5,310.6,368.8,426.9,485.1,543.2,601.4,659.5,717.7,775.8,834].map(y=>y*119/896);
+const mapGridX=[27.23077,36.06154,44.89231,53.72308,62.55385,71.38462,80.21538,89.04615,97.87692,106.70769,115.53846,124.36923,133.20000,142.03077,150.86154,159.69231];
+const mapGridY=[8.30769,17.26154,26.20000,35.15385,44.09231,53.04615,61.98462,70.93846,79.87692,88.83077,97.76923,106.72308,115.66154,124.61538];
 // Build eligibility is read from the map artwork itself: clear grass tiles
 // are available; path, restaurant, and prop-covered tiles are excluded.
 const tileCenter=(col,row)=>[(mapGridX[col]+mapGridX[col+1])/320,(mapGridY[row]+mapGridY[row+1])/238];
 function isGrassTile(ctx,img,col,row){
- const sx=img.naturalWidth/160,sy=img.naturalHeight/119;
+ const sx=img.naturalWidth/160,sy=img.naturalHeight/124.923077;
  const x0=mapGridX[col]*sx,x1=mapGridX[col+1]*sx;
  const y0=mapGridY[row]*sy,y1=mapGridY[row+1]*sy;
  let green=0,total=0;
