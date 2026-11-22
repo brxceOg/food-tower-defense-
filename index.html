@@ -55,7 +55,7 @@ const defs=[
  {id:'burger',name:'Burger Blaster',cost:180,damage:6,rate:2500,range:245,icon:'🍔',speed:270}
 ];
 let coins=180,health=10,wave=1,bestWave=Number(localStorage.getItem('ftd-best-wave')||0),selected=null,selectedSpot=null,placing=false,active=false,spawned=0,cleared=0,total=0,last=0,camY=0,drag=null,runStats={fed:0,earned:0},towers=[],customers=[],shots=[],spotDefs=[],lastTime=0,raf=0;
-const route=[{x:-8.615385,y:69.366154},{x:39.384615,y:69.366154},{x:43.076923,y:55.581538},{x:43.076923,y:36.283077},{x:59.692308,y:25.255385},{x:96.615385,y:25.255385},{x:109.538462,y:37.661538},{x:109.538462,y:63.852308},{x:87.384615,y:72.123077},{x:85.538462,y:92.800000},{x:105.846154,y:103.827692},{x:139.076923,y:103.827692},{x:146.461538,y:90.043077},{x:146.461538,y:61.095385},{x:155.692308,y:61.095385}];
+const route=[{x:0,y:69.366154},{x:39.384615,y:69.366154},{x:43.076923,y:55.581538},{x:43.076923,y:36.283077},{x:59.692308,y:25.255385},{x:96.615385,y:25.255385},{x:109.538462,y:37.661538},{x:109.538462,y:63.852308},{x:87.384615,y:72.123077},{x:85.538462,y:92.800000},{x:105.846154,y:103.827692},{x:139.076923,y:103.827692},{x:146.461538,y:90.043077},{x:146.461538,y:61.095385},{x:155.692308,y:61.095385}];
 // Measured from the actual IMG_1359.jpeg raster (1200 x 896 px).
 // The printed grass placement grid has 15 columns x 13 rows.
 // These are the source-image grid-line coordinates, converted into the SVG's
