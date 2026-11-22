@@ -232,3 +232,9 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 - The supplied sheet is 1408 × 768 and is divided into seven columns by four rows. Extract the two top-row red cannon poses and the seven red cannon smoke-animation poses from the bottom row; exclude the yellow cannon art and the standalone projectile.
 - Build a dedicated transparent runtime atlas from individually isolated frames. Preserve each complete source cell on a consistent 202 × 192 canvas; remove only edge-connected neutral background. Never trim or independently scale frame bounds, so no cannon, base, muzzle, or smoke pixels are clipped and animation frames retain a stable footprint.
 - The shared cannon uses the top-left red cannon pose as idle and cycles through all seven bottom-row smoke poses when firing. Pizza and burger retain their existing artwork and animation mapping.
+
+
+### Combined ketchup-and-mustard sauce projectile (2026-11-22)
+- Use the red ketchup splash and yellow mustard splash artwork from the first row of `IMG_1357.jpeg` as the projectile for the unified red/yellow cannon.
+- Isolate the splash artwork from the right-hand muzzle area of each firing cel, removing only edge-connected neutral sheet background. Combine the two sauce splashes into one transparent projectile image.
+- When the unified cannon fires, render this combined sauce projectile as an image rather than an emoji. Rotate it along the shot's travel direction and keep its own fixed pixel-art footprint while it travels. Pizza Launcher and Burger Blaster projectiles remain unchanged.
