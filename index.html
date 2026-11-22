@@ -64,7 +64,7 @@ const mapGridX=[27.23077,36.06154,44.89231,53.72308,62.55385,71.38462,80.21538,8
 const mapGridY=[8.30769,17.26154,26.20000,35.15385,44.09231,53.04615,61.98462,70.93846,79.87692,88.83077,97.76923,106.72308,115.66154,124.61538];
 // Build eligibility is read from the map artwork itself: clear grass tiles
 // are available; path, restaurant, and prop-covered tiles are excluded.
-const tileCenter=(col,row)=>[(mapGridX[col]+mapGridX[col+1])/320,(mapGridY[row]+mapGridY[row+1])/238];
+const tileCenter=(col,row)=>[(mapGridX[col]+mapGridX[col+1])/320,(mapGridY[row]+mapGridY[row+1])/249.846154];
 function isGrassTile(ctx,img,col,row){
  const sx=img.naturalWidth/160,sy=img.naturalHeight/124.923077;
  const x0=mapGridX[col]*sx,x1=mapGridX[col+1]*sx;
