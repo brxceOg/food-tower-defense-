@@ -56,6 +56,7 @@ Living design and implementation reference. Update this document whenever an app
 ## Turrets and combat
 Turrets are food-based weapons, not conventional fantasy or military towers.
 - Automatically acquire eligible customers within range.
+- Placed turrets use an enlarged visual footprint that remains centered on the selected build tile, with a subtle contact shadow so each weapon appears seated on top of the grass rather than flat inside a small grid cell.
 - Flip each turret sprite horizontally to face its current in-range target (left or right); do not rotate or tilt the sprite. Keep the turret anchored to its tile.
 - Fire visible food projectiles.
 - Have distinct range, firing rate, feeding power, projectile behavior, and upgrade paths.
