@@ -249,3 +249,8 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 - Remove only the edge-connected neutral gray sheet background from each crop. Preserve every disconnected foreground detail that belongs to the pose, including chips and small motion/steam pixels.
 - Normalize all four idle poses and all sixteen firing/reload poses onto a common 200 × 200 transparent frame canvas using one shared scale and a common bottom baseline. Do not trim individual frames to different display sizes or change the turret element footprint while animating.
 - Use the gold chip-toss motion artwork between the third-row tower poses as the Chip Tosser projectile. Keep it as a separate transparent image, rotated along the shot direction; do not affect the unified ketchup/mustard sauce projectile.
+
+
+### Full-viewport battlefield presentation
+- The battlefield world must fill the entire available arena between the fixed HUD and build controls on every screen size. Do not constrain it to a centered aspect-ratio box or leave side/bottom gutters around the map.
+- Scale the supplied map artwork edge-to-edge within the arena so no contrasting backdrop or gray letterbox frame appears around it. Keep the world, map image, build grid, towers, customers, and effects sharing the same full-arena coordinate space.
