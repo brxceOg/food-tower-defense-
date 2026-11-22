@@ -38,8 +38,8 @@ These establish the initial character and environment direction. Inspect and int
 - The map should extend beyond the viewport as a continuous world without visible seams or abrupt jumps.
 
 ## Customer art and animation
-- The supplied customer sheet is segmented using its measured 176 × 256 source cells; isolate background pixels from the outside inward so pale character details remain intact.
-- Normalize extracted frames onto identical transparent canvases with a shared foot baseline. Never independently scale tightly trimmed frames into the display box, which causes characters to jump, chop, or overlap between animation steps.
+- The supplied customer sheet is segmented using its measured 180 × 256 source cells; isolate background pixels from the outside inward so pale character details remain intact.
+- Crop the exact 180 × 256 source cells and preserve their original pixel scale and coordinates on identical transparent canvases. Never independently trim-and-rescale frames; that causes characters to jump in size or position and can pull neighboring artwork into the animation.
 - Keep each character's frame sequence separate and advance it on a per-customer timer at a steady, readable pace.
 - Keep customers recognizable as the supplied characters.
 - Use available walking and reaction animations where supported by the sheets.
