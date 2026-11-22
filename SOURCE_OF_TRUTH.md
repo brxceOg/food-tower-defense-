@@ -62,7 +62,7 @@ Turrets are food-based weapons, not conventional fantasy or military towers.
 - Initial concepts:
   - Ketchup Cannon: fast attacks, lower feeding power.
   - Mustard Cannon: medium feeding power, longer range.
-  - Pizza Launcher: heavy or area feeding.
+  - Chip Tosser (replaces Pizza Launcher): heavy or area feeding with tossed-chip projectiles.
   - Burger Blaster: powerful single-target feeding, slower cadence.
   - Soda Sprayer: slows customers.
   - Fry Flinger: rapid volleys.
@@ -156,3 +156,10 @@ Do not silently assume answers for: final branding/title; exact map dimensions a
 ## Turret initial orientation
 - On placement, each turret initially faces toward the customer spawn point at `route[0]`, so players can immediately read its defensive direction before a wave begins.
 - During combat, turrets may turn to face their current eligible target; when no target is available, they retain their spawn-facing orientation.
+
+
+## Chip Tosser replacement (2026-11-22)
+- The user-supplied `IMG_1368.jpeg` replaces the former Pizza Launcher artwork and shop title with Chip Tosser.
+- Preserve the existing Pizza Launcher gameplay values and the legacy internal `pizza` type for compatibility with existing placed towers. The shop and player-facing tower name must say Chip Tosser.
+- Extract the four top-row idle poses and sixteen individual toss/reload poses from the lower three rows. Preserve full artwork, remove only edge-connected gray sheet background, and normalize all frames to a shared transparent 200 × 200 canvas with one scale and bottom baseline.
+- Use the separate chip-toss motion artwork as the tower's food projectile. Keep the ketchup/mustard cannon and its combined sauce projectile unchanged.
