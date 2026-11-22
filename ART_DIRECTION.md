@@ -222,5 +222,5 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 
 ### Turret animation frame scale consistency (2026-11-22)
 - Do not independently scale each turret animation cel to its own trimmed bounds. This makes narrow firing poses appear smaller or larger than idle art.
-- For each turret family, compute the maximum visible width and height across all of its frames, derive one shared scale, and use that scale for every frame in the family.
+- For each turret family, compute a robust shared scale from the median visible width and height across its frames, so one unusually large or poorly trimmed cel cannot shrink every pose. Apply that same scale to every frame in the family.
 - Keep every output frame on the same 144 × 240 transparent canvas, centered horizontally and aligned to the same bottom baseline. Preserve the fixed turret DOM footprint and only swap the image source during animation.
