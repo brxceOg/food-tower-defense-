@@ -79,7 +79,7 @@ function isGrassTile(ctx,img,col,row){
  }
  return green/total>=.90;
 }
-function layoutWorld(){const w=arena.clientWidth,h=arena.clientHeight,ratio=75/56,worldW=Math.min(w,h*ratio),worldH=worldW/ratio;world.style.width=worldW+'px';world.style.height=worldH+'px';world.style.left='50%';world.style.top='50%';world.style.transform='translate(-50%,-50%)';camY=0}
+function layoutWorld(){const map=$('mapArt'),w=arena.clientWidth,h=arena.clientHeight;if(!w||!h)return;const ratio=map.naturalWidth&&map.naturalHeight?map.naturalWidth/map.naturalHeight:75/56;const scale=Math.min(w/(ratio),h);const worldW=scale*ratio,worldH=scale;world.style.width=worldW+'px';world.style.height=worldH+'px';world.style.left='50%';world.style.top='50%';world.style.transform='translate(-50%,-50%)';camY=0}
 function worldSize(){return {w:world.clientWidth,h:world.clientHeight}}
 function pos(p){let s=worldSize();return {x:p.x*s.w,y:p.y*s.h}}
 function initSpots(){
@@ -126,7 +126,7 @@ function endRun(win){active=false;if(win)bestWave=Math.max(bestWave,wave);else b
 $('continue').onclick=()=>{ $('result').classList.add('hidden');if(health<=0){health=10;coins=180;wave=1;runStats={fed:0,earned:0};towers=[];$('towers').innerHTML='';spotDefs.forEach(s=>{s.tower=null;s.el.classList.remove('occupied')})}else wave++;customers=[];$('customers').innerHTML='';shots=[];update()};
 $('waveBtn').onclick=()=>{if(!active)spawn()};
 $('inspect').onclick=()=>{if(selectedSpot&&selectedSpot.tower){let d=defs.find(x=>x.id===selectedSpot.tower);toast(d.name+' · '+d.damage+' feed · '+d.range+' range')}else toast('Tap a placed turret to inspect it')};
-layoutWorld();$('play').onclick=async()=>{$('play').disabled=true;$('play').textContent='PREPARING...';try{layoutWorld();initSpots();update();await loadArtwork();$('intro').classList.add('hidden')}catch(err){console.error('Game setup failed:',err);toast('Could not load the game assets. Please refresh.')}finally{$('play').disabled=false;$('play').textContent="LET'S COOK!"}};
+layoutWorld();const arenaObserver=typeof ResizeObserver!=='undefined'?new ResizeObserver(()=>layoutWorld()):null;if(arenaObserver)arenaObserver.observe(arena);window.addEventListener('resize',layoutWorld,{passive:true});if(window.visualViewport)window.visualViewport.addEventListener('resize',layoutWorld,{passive:true});$('mapArt').addEventListener('load',layoutWorld,{once:true});$('play').onclick=async()=>{$('play').disabled=true;$('play').textContent='PREPARING...';try{layoutWorld();initSpots();update();await loadArtwork();$('intro').classList.add('hidden')}catch(err){console.error('Game setup failed:',err);toast('Could not load the game assets. Please refresh.')}finally{$('play').disabled=false;$('play').textContent="LET'S COOK!"}};
 let startY=0,startCam=0,moved=false;
 window.addEventListener('resize',layoutWorld);
 let lastFrame=0;function loop(now){let dt=Math.min(40,now-lastFrame||16);lastFrame=now;updateGame(dt,now);if(active&&spawned>=total&&customers.every(c=>c.dead))checkWave();requestAnimationFrame(loop)}requestAnimationFrame(loop);
