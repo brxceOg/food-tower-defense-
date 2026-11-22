@@ -268,3 +268,9 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 - Use a centered uniform cover scale: the map may extend beyond the arena edges and be cropped where the screen aspect ratio differs, but it must never be stretched or leave a visible gray/grass letterbox behind it.
 - Keep the world, build-grid SVG, route, towers, customers, and projectiles in the same enlarged map coordinate space so their positions remain registered to the artwork during the crop.
 - Keep pixel-art rendering crisp; do not distort the source image to fill the portrait viewport.
+
+
+### Centered fully-visible battlefield fit (latest correction)
+- Show the entire 1200 × 896 (75:56) battlefield artwork at once. Use a centered uniform contain scale based on the smaller of the arena width and height constraints; never crop or stretch the map.
+- Make the map as large as possible while keeping every edge visible, centered in the available arena between the fixed HUD and build menu. The surrounding arena may show the map's grass-color background where the screen aspect ratio differs.
+- Keep the world, build-grid SVG, route, towers, customers, and effects in the same fitted 75:56 coordinate plane. Do not use cover scaling or a zoomed/cropped map.
