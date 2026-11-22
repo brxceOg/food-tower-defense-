@@ -261,3 +261,10 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 - Size the world to the source map's 1200 × 896 (75:56) aspect ratio, scale it uniformly to fit the arena, and center it. Use the surrounding grass color as the letterbox fill when the phone viewport has a different shape.
 - Keep the build-grid SVG, route coordinates, towers, customers, and projectiles inside this same ratio-preserving world coordinate space so all placements remain registered to the printed map tiles.
 - Preserve nearest-neighbor pixel rendering; do not enlarge a low-resolution map to fill a mismatched portrait shape by distorting it.
+
+
+### Edge-to-edge battlefield cover fit
+- Fill the entire arena with the map artwork edge-to-edge while preserving the source 1200 × 896 (75:56) aspect ratio and native pixel proportions.
+- Use a centered uniform cover scale: the map may extend beyond the arena edges and be cropped where the screen aspect ratio differs, but it must never be stretched or leave a visible gray/grass letterbox behind it.
+- Keep the world, build-grid SVG, route, towers, customers, and projectiles in the same enlarged map coordinate space so their positions remain registered to the artwork during the crop.
+- Keep pixel-art rendering crisp; do not distort the source image to fill the portrait viewport.
