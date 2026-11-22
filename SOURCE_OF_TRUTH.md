@@ -170,3 +170,8 @@ Do not silently assume answers for: final branding/title; exact map dimensions a
 - The build grid is hidden during normal play and appears only while a turret is selected from the build menu.
 - A successful placement consumes that selection: clear the active shop-button state and hide the build grid immediately after the turret is placed.
 - The player must select a build-menu turret again before placing another one. Existing placed turrets remain directly tappable for inspection.
+
+
+## Map aspect ratio and fit
+- The original battlefield art is 1200 × 896 (75:56). Show the entire image at a uniform scale, centered inside the available arena; never stretch or crop the artwork to force a portrait aspect ratio.
+- On portrait phones, use the surrounding grass-color area to fill any unused space above/below the landscape-proportioned map. The map, tile grid, route, towers, customers, and effects must share the same fitted world dimensions.
