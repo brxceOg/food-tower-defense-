@@ -254,3 +254,10 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 ### Full-viewport battlefield presentation
 - The battlefield world must fill the entire available arena between the fixed HUD and build controls on every screen size. Do not constrain it to a centered aspect-ratio box or leave side/bottom gutters around the map.
 - Scale the supplied map artwork edge-to-edge within the arena so no contrasting backdrop or gray letterbox frame appears around it. Keep the world, map image, build grid, towers, customers, and effects sharing the same full-arena coordinate space.
+
+
+### Aspect-ratio-preserving battlefield fit
+- Keep the full `IMG_1359.jpeg` battlefield visible within the available arena without stretching, skewing, or cropping its artwork.
+- Size the world to the source map's 1200 × 896 (75:56) aspect ratio, scale it uniformly to fit the arena, and center it. Use the surrounding grass color as the letterbox fill when the phone viewport has a different shape.
+- Keep the build-grid SVG, route coordinates, towers, customers, and projectiles inside this same ratio-preserving world coordinate space so all placements remain registered to the printed map tiles.
+- Preserve nearest-neighbor pixel rendering; do not enlarge a low-resolution map to fill a mismatched portrait shape by distorting it.
