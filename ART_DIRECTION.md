@@ -192,3 +192,10 @@ The four user-supplied source files are present in the repository root and are u
 | `IMG_1365.jpeg` | Newly supplied male-customer sheet | Six isolated walk-cycle frames across the upper row and one isolated knockback/reaction pose in the lower row; use a shared scale and bottom baseline. |
 
 The current runtime extracts transparent character/turret cutouts from the JPEG sprite sheets by removing the neutral gray sheet background. Cropping is calculated from the loaded image's actual dimensions rather than assuming a high-resolution export. The source files remain unchanged. The GIF is retained as the UI reference for the next interface-art integration pass.
+
+
+### Male customer knockback extraction correction (2026-11-21)
+- `IMG_1365.jpeg` has six walk frames in the top row, but its lower-row knockback pose is centered across the two middle columns rather than contained in one standard cell.
+- Extract the knockback pose from the combined middle-bottom region, then isolate its largest connected character silhouette against the sheet background. Do not crop it to a single walk-cell boundary.
+- Keep the reaction on the same normalized scale and bottom baseline as the walk cycle. Its transparent output canvas may be wider than a walk frame; render that reaction image wider than the normal customer box so the complete pose remains visible without shrinking or clipping it.
+- Preserve all six existing walk-frame crops and the original source image.
