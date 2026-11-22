@@ -151,3 +151,8 @@ Inspect the actual files in the repository before integrating. Do not assume fil
 
 ## Open decisions
 Do not silently assume answers for: final branding/title; exact map dimensions and route; one map versus multiple stages; initial turret roster/costs/stats/upgrades; customer classes and wave balance; currency and scoring formulas; restaurant health and damage values; main menu/meta-progression/unlocks; land expansion; sound/music; leaderboard backend and account model.
+
+
+## Turret initial orientation
+- On placement, each turret initially faces toward the customer spawn point at `route[0]`, so players can immediately read its defensive direction before a wave begins.
+- During combat, turrets may turn to face their current eligible target; when no target is available, they retain their spawn-facing orientation.
