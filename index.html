@@ -79,7 +79,7 @@ function isGrassTile(ctx,img,col,row){
  }
  return green/total>=.90;
 }
-function layoutWorld(){const w=arena.clientWidth,h=arena.clientHeight,ratio=75/56,worldW=Math.min(w,h*ratio),worldH=worldW/ratio;world.style.width=worldW+'px';world.style.height=worldH+'px';world.style.left='50%';world.style.top='50%';world.style.transform='translate(-50%,-50%)';camY=0}
+function layoutWorld(){const w=arena.clientWidth,h=arena.clientHeight,ratio=75/56,worldW=Math.max(w,h*ratio),worldH=worldW/ratio;world.style.width=worldW+'px';world.style.height=worldH+'px';world.style.left='50%';world.style.top='50%';world.style.transform='translate(-50%,-50%)';camY=0}
 function worldSize(){return {w:world.clientWidth,h:world.clientHeight}}
 function pos(p){let s=worldSize();return {x:p.x*s.w,y:p.y*s.h}}
 function initSpots(){
