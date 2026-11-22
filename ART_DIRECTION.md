@@ -206,3 +206,8 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 - Extract six walk frames independently from the six cells across the top row. Keep the order left-to-right.
 - The lower-left knockback pose spans beyond one standard cell. Extract it from the combined first two cells of the bottom row, isolate the complete connected character silhouette, and normalize it with the same scale and bottom baseline as the six walk frames.
 - Keep the knockback image canvas wide enough to retain the full pose and render it with the dedicated wide hit-pose treatment. The female hit pose must be wired to the female customer reaction slot, not substituted for the male reaction.
+
+
+### Initial turret facing (2026-11-22)
+- Newly placed turrets must initially face toward the customer spawn point at the beginning of the route. Determine the left/right flip from the turret's world X position relative to `route[0].x`.
+- Once an eligible customer enters range, normal target-facing logic may turn the turret toward that customer. When no target is available, retain the spawn-facing orientation.
