@@ -180,3 +180,10 @@ Do not silently assume answers for: final branding/title; exact map dimensions a
 ## Edge-to-edge map presentation
 - The battlefield covers the entire available arena from edge to edge. Scale the 1200 × 896 map uniformly using a centered cover fit; crop the overflow at the arena boundaries rather than stretching the map or leaving a contrasting background visible.
 - Keep the world coordinate plane at the same 75:56 aspect ratio and enlarge it to cover the arena. The printed tile grid, route, towers, customers, and effects all remain aligned to that plane.
+
+
+## Centered fully-visible battlefield fit (latest correction)
+- Display the complete 1200 × 896 (75:56) map at the largest uniform scale that fits inside the available arena between the fixed HUD and build menu.
+- Center the map horizontally and vertically in the arena. Preserve its original aspect ratio and show all four edges; do not crop, stretch, or use a cover fit. The arena's grass-colored background may remain visible around the map on portrait screens.
+- Keep the world coordinate plane, map image, build-grid SVG, route, towers, customers, and effects aligned to the same fitted 75:56 dimensions.
+- This centered contain fit supersedes earlier full-viewport and edge-to-edge cover-fit presentation notes.
