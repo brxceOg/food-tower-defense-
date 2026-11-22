@@ -218,3 +218,9 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 - Ketchup and mustard turrets use their corresponding idle and firing frames from the first two rows. Pizza and burger cannon turrets use the idle, firing, blast, and smoke sequence from the third row.
 - All animation frames must be rendered inside the existing fixed turret element footprint. Never resize the turret element between frames; preserve the same facing flip and anchor while changing only the image source.
 - Trigger the firing sequence from the existing projectile launch event and return to the idle frame automatically. Keep nearest-neighbor pixel rendering.
+
+
+### Turret animation frame scale consistency (2026-11-22)
+- Do not independently scale each turret animation cel to its own trimmed bounds. This makes narrow firing poses appear smaller or larger than idle art.
+- For each turret family, compute the maximum visible width and height across all of its frames, derive one shared scale, and use that scale for every frame in the family.
+- Keep every output frame on the same 144 × 240 transparent canvas, centered horizontally and aligned to the same bottom baseline. Preserve the fixed turret DOM footprint and only swap the image source during animation.
