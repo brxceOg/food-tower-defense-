@@ -238,3 +238,12 @@ The current runtime extracts transparent character/turret cutouts from the JPEG 
 - Use the red ketchup splash and yellow mustard splash artwork from the first row of `IMG_1357.jpeg` as the projectile for the unified red/yellow cannon.
 - Isolate the splash artwork from the right-hand muzzle area of each firing cel, removing only edge-connected neutral sheet background. Combine the two sauce splashes into one transparent projectile image.
 - When the unified cannon fires, render this combined sauce projectile as an image rather than an emoji. Rotate it along the shot's travel direction and keep its own fixed pixel-art footprint while it travels. Pizza Launcher and Burger Blaster projectiles remain unchanged.
+
+
+### Chip Tosser tower replacement (2026-11-22)
+- `IMG_1368.jpeg` is the supplied Chip Tosser artwork sheet (1408 × 768). Preserve the original source image.
+- Replace the former Pizza Launcher artwork and shop name with Chip Tosser. Keep its existing tower gameplay stats, placement, targeting, range, firing cadence, and upgrade/inspection identity; retain the legacy internal `pizza` tower type so existing placed instances remain compatible.
+- The top row contains four loaded-basket idle poses. The lower three rows contain the toss/reload sequence: five poses in row two, four poses at the left of row three, and seven poses across row four. Extract each pose from its own measured crop; do not use one broad crop that includes neighboring poses.
+- Remove only the edge-connected neutral gray sheet background from each crop. Preserve every disconnected foreground detail that belongs to the pose, including chips and small motion/steam pixels.
+- Normalize all four idle poses and all sixteen firing/reload poses onto a common 200 × 200 transparent frame canvas using one shared scale and a common bottom baseline. Do not trim individual frames to different display sizes or change the turret element footprint while animating.
+- Use the gold chip-toss motion artwork between the third-row tower poses as the Chip Tosser projectile. Keep it as a separate transparent image, rotated along the shot direction; do not affect the unified ketchup/mustard sauce projectile.
